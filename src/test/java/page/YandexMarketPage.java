@@ -38,7 +38,7 @@ public class YandexMarketPage extends BaseSeleniumPage {
 
 
     public YandexMarketPage() {
-        driver.get("https://market.yandex.ru/");
+        driver.get(config.getBaseUrl());
         driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, this);
     }

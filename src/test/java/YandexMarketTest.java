@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import page.PageWithDynamicLocator;
 import page.YandexMarketPage;
 
 public class YandexMarketTest extends BaseSeleniumTest {
@@ -9,13 +8,13 @@ public class YandexMarketTest extends BaseSeleniumTest {
     @Test
     public void mobileMarketTest() {
         YandexMarketPage yandexPage = new YandexMarketPage();
-        yandexPage.clickSearchBar(config.getSearchItem())
+        yandexPage.clickSearchBar(config.getSearchItem()).searchPage()
                 .inputFilterProperties(config.getPrice(), config.getDiagonal());
-        String firstElement = yandexPage.firstElement();
-        Assertions.assertEquals(config.getExpectedNumberOfElements(), yandexPage.searchResult().size());
+        String firstElement = yandexPage.searchPage().firstElement();
+        Assertions.assertEquals(config.getExpectedNumberOfElements(), yandexPage.searchPage().searchResult().size());
         System.out.println(firstElement);
-        yandexPage.clickMoreExpensiveButton();
-        pageWithDynamicLocator.getElementByDynamicLocator(firstElement).click();
-        System.out.println(yandexPage.getRating());
+        yandexPage.searchPage().clickMoreExpensiveButton()
+                .getElementByDynamicLocator(firstElement).click();
+        System.out.println(yandexPage.mobilePage().getRating());
     }
 }

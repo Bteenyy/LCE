@@ -10,31 +10,11 @@ import java.time.Duration;
 import java.util.List;
 
 public class YandexMarketPage extends BaseSeleniumPage {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     @FindBy(xpath = "//input[@id='header-search']")
     private WebElement searchBar;
     @FindBy(xpath = "//button[@data-auto='search-button']")
     private WebElement searchButton;
-    @FindBy(xpath = "//input[@class='_3hHJe _3DAWe']")
-    private WebElement maxPrice;
-    @FindBy(xpath = "//span[text()='Apple']//preceding-sibling::*[1]")
-    private WebElement apple;
-    @FindBy(xpath = "//span[text()='Xiaomi']//preceding-sibling::*[1]")
-    private WebElement xiaomi;
-    @FindBy(xpath = "//span[text()='Samsung']//preceding-sibling::*[1]")
-    private WebElement samsung;
-    @FindBy(xpath = "//span[text()='HONOR']//preceding-sibling::*[1]")
-    private WebElement honor;
-    @FindBy(xpath = "//span[text()='realme']//preceding-sibling::*[1]")
-    private WebElement realme;
-    @FindBy(xpath = "(//input[@class='_3hHJe _3MpOq'])[2]")
-    private WebElement minDiagonal;
-    @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']//h3")
-    private List<WebElement> foundElements;
-    @FindBy(xpath = "//span[text()='Новый']//preceding-sibling::*[1]")
-    private WebElement moreExpensive;
-    @FindBy(xpath = "(//span[@class='_24dJu'])[1]")
-    private WebElement rating;
 
 
     public YandexMarketPage() {
@@ -51,39 +31,11 @@ public class YandexMarketPage extends BaseSeleniumPage {
         return this;
     }
 
-    public YandexMarketPage inputFilterProperties(String price, String diagonal) {
-        wait.until(ExpectedConditions.visibilityOf(maxPrice));
-        maxPrice.sendKeys(price);
-        wait.until(ExpectedConditions.visibilityOf(apple));
-        apple.click();
-        wait.until(ExpectedConditions.visibilityOf(xiaomi));
-        xiaomi.click();
-        wait.until(ExpectedConditions.visibilityOf(samsung));
-        samsung.click();
-        wait.until(ExpectedConditions.visibilityOf(honor));
-        honor.click();
-        wait.until(ExpectedConditions.visibilityOf(realme));
-        realme.click();
-        wait.until(ExpectedConditions.visibilityOf(minDiagonal));
-        minDiagonal.sendKeys(diagonal);
-        return this;
+    public SearchPage searchPage() {
+        return new SearchPage();
     }
-
-    public List<WebElement> searchResult() {
-        return foundElements;
-    }
-
-    public String firstElement() {
-        return foundElements.get(0).getText();
-    }
-
-    public YandexMarketPage clickMoreExpensiveButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(moreExpensive));
-        moreExpensive.click();
-        return this;
-    }
-
-    public String getRating() {
-        return rating.getText();
+    public MobilePage mobilePage()
+    {
+        return new MobilePage();
     }
 }

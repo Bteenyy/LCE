@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import page.BaseSeleniumPage;
+import page.PageWithDynamicLocator;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +19,7 @@ public class BaseSeleniumTest {
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         BaseSeleniumPage.setDriver(driver);
+        PageWithDynamicLocator.setDriver(driver);
     }
 
 

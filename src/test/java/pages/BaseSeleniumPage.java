@@ -1,4 +1,4 @@
-package page;
+package pages;
 
 import config.WebConfig;
 import org.aeonbits.owner.ConfigFactory;

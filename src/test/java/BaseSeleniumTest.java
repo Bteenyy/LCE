@@ -21,7 +21,6 @@ public class BaseSeleniumTest {
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         BaseSeleniumPage.setDriver(driver);
-        PageWithDynamicLocator.setDriver(driver);
     }
 
 

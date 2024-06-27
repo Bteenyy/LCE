@@ -3,8 +3,6 @@ import org.junit.jupiter.api.Test;
 import page.YandexMarketPage;
 
 public class YandexMarketTest extends BaseSeleniumTest {
-    PageWithDynamicLocator pageWithDynamicLocator = new PageWithDynamicLocator();
-
     @Test
     public void mobileMarketTest() {
         YandexMarketPage yandexPage = new YandexMarketPage();

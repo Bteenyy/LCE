@@ -31,8 +31,11 @@ public class YandexMarketPage extends BaseSeleniumPage {
     private WebElement minDiagonal;
     @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']//h3")
     private List<WebElement> foundElements;
-    @FindBy(xpath = "//*[contains(text(), 'подороже')]")
+    @FindBy(xpath = "//span[text()='Новый']//preceding-sibling::*[1]")
     private WebElement moreExpensive;
+    @FindBy(xpath = "(//span[@class='_24dJu'])[1]")
+    private WebElement rating;
+
 
     public YandexMarketPage() {
         driver.get("https://market.yandex.ru/");
@@ -75,8 +78,12 @@ public class YandexMarketPage extends BaseSeleniumPage {
     }
 
     public YandexMarketPage clickMoreExpensiveButton() {
-        wait.until(ExpectedConditions.visibilityOf(moreExpensive));
+        wait.until(ExpectedConditions.elementToBeClickable(moreExpensive));
         moreExpensive.click();
         return this;
+    }
+
+    public String getRating() {
+        return rating.getText();
     }
 }

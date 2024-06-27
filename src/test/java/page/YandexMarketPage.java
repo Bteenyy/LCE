@@ -1,9 +1,7 @@
 package page;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,7 +29,7 @@ public class YandexMarketPage extends BaseSeleniumPage {
     private WebElement realme;
     @FindBy(xpath = "(//input[@class='_3hHJe _3MpOq'])[2]")
     private WebElement minDiagonal;
-    @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']")
+    @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']//h3")
     private List<WebElement> foundElements;
 
     public YandexMarketPage() {
@@ -66,8 +64,11 @@ public class YandexMarketPage extends BaseSeleniumPage {
         return this;
     }
 
-    public YandexMarketPage compareResult() {
-        foundElements.size();
-        return this;
+    public List<WebElement> searchResult() {
+        return foundElements;
+    }
+    public String firstElement()
+    {
+        return foundElements.get(0).toString();
     }
 }

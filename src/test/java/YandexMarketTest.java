@@ -1,10 +1,6 @@
-import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebElement;
 import page.YandexMarketPage;
-
-import java.util.List;
 
 public class YandexMarketTest extends BaseSeleniumTest {
     final String searchItem = "Сотовые телефоны";
@@ -18,6 +14,8 @@ public class YandexMarketTest extends BaseSeleniumTest {
         YandexMarketPage yandexPage = new YandexMarketPage();
         yandexPage.clickSearchBar(searchItem)
                 .inputFilterProperties(price, diagonal);
-        Assertions.assertEquals(expectedNumberOfElements, yandexPage.compareResult());
+        firstElement = yandexPage.firstElement();
+        Assertions.assertEquals(expectedNumberOfElements, yandexPage.searchResult().size());
+        System.out.println(firstElement);
     }
 }

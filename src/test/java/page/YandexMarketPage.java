@@ -1,12 +1,15 @@
 package page;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class YandexMarketPage extends BaseSeleniumPage {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -26,9 +29,10 @@ public class YandexMarketPage extends BaseSeleniumPage {
     private WebElement honor;
     @FindBy(xpath = "//span[text()='realme']//preceding-sibling::*[1]")
     private WebElement realme;
-    @FindBy(xpath = "//input[@aria-labelledby='labeltextfield9900224053']")
+    @FindBy(xpath = "(//input[@class='_3hHJe _3MpOq'])[2]")
     private WebElement minDiagonal;
-
+    @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']")
+    private List<WebElement> foundElements;
 
     public YandexMarketPage() {
         driver.get("https://market.yandex.ru/");
@@ -44,7 +48,7 @@ public class YandexMarketPage extends BaseSeleniumPage {
         return this;
     }
 
-    public YandexMarketPage inputSearchProperties(String price,String diagonal) {
+    public YandexMarketPage inputFilterProperties(String price, String diagonal) {
         wait.until(ExpectedConditions.visibilityOf(maxPrice));
         maxPrice.sendKeys(price);
         wait.until(ExpectedConditions.visibilityOf(apple));
@@ -59,6 +63,11 @@ public class YandexMarketPage extends BaseSeleniumPage {
         realme.click();
         wait.until(ExpectedConditions.visibilityOf(minDiagonal));
         minDiagonal.sendKeys(diagonal);
+        return this;
+    }
+
+    public YandexMarketPage compareResult() {
+        foundElements.size();
         return this;
     }
 }

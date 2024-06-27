@@ -25,7 +25,7 @@ public class SearchPage extends BaseSeleniumPage {
     private WebElement minDiagonal;
     @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']//h3")
     private List<WebElement> foundElements;
-    @FindBy(xpath = "//span[text()='Новый']//preceding-sibling::*[1]")
+    @FindBy(xpath = "//span[text()='черный']")
     private WebElement moreExpensive;
 
 
@@ -48,6 +48,9 @@ public class SearchPage extends BaseSeleniumPage {
         realme.click();
         wait.until(ExpectedConditions.visibilityOf(minDiagonal));
         minDiagonal.sendKeys(diagonal);
+        driver.navigate().refresh();
+        //wait.until(ExpectedConditions.visibilityOf(moreExpensive));
+       // moreExpensive.click();
         return this;
     }
 

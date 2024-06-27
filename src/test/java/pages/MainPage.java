@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class YandexMarketPage extends BaseSeleniumPage {
+public class MainPage extends BaseSeleniumPage {
 
     @FindBy(xpath = "//input[@id='header-search']")
     private WebElement searchBar;
@@ -13,13 +13,13 @@ public class YandexMarketPage extends BaseSeleniumPage {
     private WebElement searchButton;
 
 
-    public YandexMarketPage() {
+    public MainPage() {
         driver.get(config.getBaseUrl());
-        driver.manage().deleteAllCookies();
+        //driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, this);
     }
 
-    public YandexMarketPage clickSearchBar(String name) {
+    public MainPage clickSearchBar(String name) {
         wait.until(ExpectedConditions.visibilityOf(searchBar));
         searchBar.sendKeys(name);
         wait.until(ExpectedConditions.visibilityOf(searchButton));

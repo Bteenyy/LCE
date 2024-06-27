@@ -15,6 +15,6 @@ public interface WebConfig extends Config {
     @DefaultValue("Сотовые телефоны")
     String getSearchItem();
 
-    @DefaultValue("24")
+    @DefaultValue("8")
     String getExpectedNumberOfElements();
 }

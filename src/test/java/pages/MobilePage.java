@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class MobilePage extends BaseSeleniumPage {
-    @FindBy(xpath = "(//span[@class='_2SUA6 _3tpj6 _1X1Ia _1A5yJ _2j1X1'])[1]")
+    @FindBy(xpath = "//*[@class='_261_I']//div[@class='_23gJ9']//span[@class='_24dJu']")
     private WebElement rating;
 
     public MobilePage() {
@@ -15,6 +15,6 @@ public class MobilePage extends BaseSeleniumPage {
     }
 
     public WebElement getRating() {
-            return rating;
+        return rating;
     }
 }

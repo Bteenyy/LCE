@@ -1,5 +1,6 @@
 package pages;
 
+import helpers.SwitchToNewWindow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -73,8 +74,10 @@ public class SearchPage extends BaseSeleniumPage {
 
     public SearchPage clickElementByDynamicLocator(String value) {
         waitForPageLoad(driver);
+        String window = driver.getWindowHandle();
         wait.until(ExpectedConditions.elementToBeClickable(xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]")));
         driver.findElement(By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]")).click();
+        SwitchToNewWindow.SwitchToNewWindow(driver, window);
         return this;
     }
 }

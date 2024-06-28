@@ -15,6 +15,6 @@ public class YandexMarketTest extends BaseSeleniumTest {
         System.out.println(firstElement);
         mainPage.searchPage().clickNewButton();
         mainPage.searchPage().clickElementByDynamicLocator(firstElement);
-        System.out.println(mainPage.mobilePage().getRating().size());
+        System.out.println(mainPage.mobilePage().getRating().getText());
     }
 }

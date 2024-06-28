@@ -52,7 +52,7 @@ public class SearchPage extends BaseSeleniumPage {
         realme.click();
         wait.until(ExpectedConditions.visibilityOf(minDiagonal));
         minDiagonal.sendKeys(diagonal);
-        driver.navigate().refresh();
+        //driver.navigate().refresh();
         waitForPageLoad(driver);
         return this;
     }

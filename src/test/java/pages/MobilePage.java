@@ -1,22 +1,20 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 public class MobilePage extends BaseSeleniumPage {
-    @FindBy(xpath = "(//span[@class='_24dJu'])[1]")
-    private WebElement rating;
+    @FindBy(xpath = "//div[@class='_1271A _1MOwX _2eMnU _2fCCf']")
+    private List<WebElement> rating;
 
     public MobilePage() {
         PageFactory.initElements(driver, this);
     }
 
-    public MobilePage getRating() {
-        wait.until(ExpectedConditions.elementToBeClickable(rating));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].getText();", rating);
-        return this;
+    public List<WebElement> getRating() {
+            return rating;
     }
 }

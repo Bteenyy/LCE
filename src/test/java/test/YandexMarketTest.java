@@ -12,8 +12,9 @@ public class YandexMarketTest extends BaseSeleniumTest {
                 .inputFilterProperties(BaseSeleniumTest.config.getPrice(), BaseSeleniumTest.config.getDiagonal());
         String firstElement = mainPage.searchPage().firstElement();
         Assertions.assertEquals(BaseSeleniumTest.config.getExpectedNumberOfElements(), String.valueOf(mainPage.searchPage().searchResult().size()));
+        System.out.println(firstElement);
         mainPage.searchPage().clickNewButton();
         mainPage.searchPage().clickElementByDynamicLocator(firstElement);
-        System.out.println(mainPage.mobilePage().getRating());
+        System.out.println(mainPage.mobilePage().getRating().size());
     }
 }

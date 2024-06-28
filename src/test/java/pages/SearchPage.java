@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 import static helpers.WaitPageLoad.waitForPageLoad;
+import static org.openqa.selenium.By.xpath;
 
 public class SearchPage extends BaseSeleniumPage {
     @FindBy(xpath = "//input[@class='_3hHJe _3DAWe']")
@@ -71,8 +72,9 @@ public class SearchPage extends BaseSeleniumPage {
     }
 
     public SearchPage clickElementByDynamicLocator(String value) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]"));
+        waitForPageLoad(driver);
+        wait.until(ExpectedConditions.elementToBeClickable(xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]")));
+        driver.findElement(By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]")).click();
         return this;
     }
 }

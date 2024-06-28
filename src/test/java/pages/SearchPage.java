@@ -1,12 +1,15 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+
+import static helpers.WaitPageLoad.waitForPageLoad;
 
 public class SearchPage extends BaseSeleniumPage {
     @FindBy(xpath = "//input[@class='_3hHJe _3DAWe']")
@@ -25,8 +28,8 @@ public class SearchPage extends BaseSeleniumPage {
     private WebElement minDiagonal;
     @FindBy(xpath = "//div[@data-apiary-widget-name='@light/Organic']//h3")
     private List<WebElement> foundElements;
-    @FindBy(xpath = "//span[text()='черный']")
-    private WebElement moreExpensive;
+    @FindBy(xpath = "//span[text()='Новый']//preceding-sibling::*[1]")
+    private WebElement newButton;
 
 
     public SearchPage() {
@@ -49,8 +52,7 @@ public class SearchPage extends BaseSeleniumPage {
         wait.until(ExpectedConditions.visibilityOf(minDiagonal));
         minDiagonal.sendKeys(diagonal);
         driver.navigate().refresh();
-        //wait.until(ExpectedConditions.visibilityOf(moreExpensive));
-       // moreExpensive.click();
+        waitForPageLoad(driver);
         return this;
     }
 
@@ -62,12 +64,15 @@ public class SearchPage extends BaseSeleniumPage {
         return foundElements.get(0).getText();
     }
 
-    public SearchPage clickMoreExpensiveButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(moreExpensive));
-        moreExpensive.click();
+    public SearchPage clickNewButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(newButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", newButton);
         return this;
     }
-    public WebElement getElementByDynamicLocator(String value) {
-        return driver.findElement(By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]"));
+
+    public SearchPage clickElementByDynamicLocator(String value) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", By.xpath("//*[contains(text(), '" + value + "')]//preceding-sibling::*[1]"));
+        return this;
     }
 }

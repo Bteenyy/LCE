@@ -15,7 +15,6 @@ public class MainPage extends BaseSeleniumPage {
 
     public MainPage() {
         driver.get(config.getBaseUrl());
-        //driver.manage().deleteAllCookies();
         PageFactory.initElements(driver, this);
     }
 
@@ -30,8 +29,8 @@ public class MainPage extends BaseSeleniumPage {
     public SearchPage searchPage() {
         return new SearchPage();
     }
-    public MobilePage mobilePage()
-    {
+
+    public MobilePage mobilePage() {
         return new MobilePage();
     }
 }
